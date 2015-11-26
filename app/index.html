@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<!-- build:css assets/css/main.min.css -->
+	<link rel="stylesheet" href="assets/css/main.css" media="screen">
+	<!-- endbuild -->
+
+	<title></title>
+
+
+</head>
+
+<body ng-app="ngReddit">
+
+	<div class="container">
+
+		<h1>ngReddit</h1>
+
+		<r-search-keyword>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" type="search" placeholder="Search for..." ng-model="kwc.search.keyword">
+					
+					<a href="#" class="input-group-addon" ng-click="kwc.runKeywordSearch();">Search</a>
+				</div>
+			</div>
+		</r-search-keyword>
+			
+		<r-search-keyword-results >
+			<h2 ng-if="kwsrc.items.data.children.length">Results</h2>
+			<ul class="list-unstyled">
+				<li ng-repeat="item in kwsrc.items.data.children">
+					<h4 ng-bind="item.data.title"></h4>
+					<p>Found in Subreddit: {{item.data.subreddit}}</p>
+					<p><a ng-href="http://reddit.com{{item.data.permalink}}" target="_blank">Visit</a></p>
+					<hr>
+				</li>
+			</ul>
+		</r-search-keyword-results>
+
+	</div>
+
+	<!-- build:js assets/js/scripts.min.js -->
+	<script src="assets/js/bundle.js"></script>
+	<!-- endbuild -->
+	
+</body>
+</html>
